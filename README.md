@@ -5,9 +5,6 @@
    <a href="https://codecov.io/gh/Mohammad-Alavi/apiato-rector">
       <img src="https://img.shields.io/codecov/c/github/Mohammad-Alavi/apiato-rector?token=c6e0b5g9GH" alt="code coverage"/>
    </a>
-   <a href="https://packagist.org/packages/Mohammad-Alavi/apiato-rector">
-      <img src="https://img.shields.io/packagist/v/Mohammad-Alavi/apiato-rector" alt="latest stable version">
-   </a>
    <br>
    <a href="https://packagist.org/packages/Mohammad-Alavi/apiato-rector">
       <img src="https://img.shields.io/packagist/dt/Mohammad-Alavi/apiato-rector" alt="total downloads">
