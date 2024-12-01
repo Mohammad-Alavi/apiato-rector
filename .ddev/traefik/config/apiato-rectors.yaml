@@ -1,0 +1,77 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    apiato-rector-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^apiato-rector\.ddev\.site$`)
+      
+      service: "apiato-rector-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "apiato-rector-redirectHttps"
+    apiato-rector-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^apiato-rector\.ddev\.site$`)
+      
+      service: "apiato-rector-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "apiato-rector-redirectHttps"
+    
+    
+    
+    apiato-rector-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^apiato-rector\.ddev\.site$`)
+      
+      service: "apiato-rector-web-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    apiato-rector-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^apiato-rector\.ddev\.site$`)
+      
+      service: "apiato-rector-web-8025"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+
+  middlewares:
+    apiato-rector-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    apiato-rector-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-apiato-rector-web:80
+        
+    apiato-rector-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-apiato-rector-web:8025
+        
+    
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/apiato-rector.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/apiato-rector.key

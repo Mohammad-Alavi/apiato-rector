@@ -1,0 +1,64 @@
+{
+    "name": "mohammad-alavi/apiato-rector",
+    "type": "library",
+    "description": "A collection of Rectors for the Apiato meta-framework.",
+    "keywords": [
+        "Apiato",
+        "Laravel",
+        "Rector",
+        "PHP"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/mohammad-alavi/apiato-rector/issues",
+        "source": "https://github.com/mohammad-alavi/apiato-rector"
+    },
+    "authors": [
+        {
+            "name": "Mohammad Alavi",
+            "email": "mohammad.alavi1990@gmail.com",
+            "homepage": "https://mohammadalavi.com/",
+            "role": "Author"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "webmozart/assert": "^1.11"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.19.1",
+        "friendsofphp/php-cs-fixer": "^3.8.0",
+        "mockery/mockery": "^1.4.4",
+        "php-standard-library/psalm-plugin": "^2.3",
+        "phpmd/phpmd": "@stable",
+        "phpunit/phpunit": "^10.0",
+        "psalm/plugin-laravel": "^2.8",
+        "psalm/plugin-mockery": "^1.1",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "rector/rector": "^1.2",
+        "roave/security-advisories": "dev-latest",
+        "vimeo/psalm": "^5.8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MohammadAlavi\\ApiatoRector\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MohammadAlavi\\ApiatoRector\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "github-protocols": [
+            "https"
+        ],
+        "allow-plugins": {
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
