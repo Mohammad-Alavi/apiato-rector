@@ -20,11 +20,11 @@ final class RemoveGroupAttributeRector extends AbstractRector
 
     public function getNodeTypes(): array
     {
-        return [Node\Stmt\Class_::class,];
+        return [Class_::class];
     }
 
     /**
-     * @param Node\Stmt\Class_ $node
+     * @param Class_ $node
      */
     public function refactor(Node $node): Class_|null
     {
@@ -32,7 +32,7 @@ final class RemoveGroupAttributeRector extends AbstractRector
         foreach ($node->attrGroups as $groupKey => $attrGroup) {
             foreach ($attrGroup->attrs as $attrKey => $attr) {
                 if ($this->isName($attr, Group::class)) {
-                    if (count($attrGroup->attrs) === 1) {
+                    if (1 === count($attrGroup->attrs)) {
                         unset($node->attrGroups[$groupKey]);
                         $hasChanged = true;
                         continue;
