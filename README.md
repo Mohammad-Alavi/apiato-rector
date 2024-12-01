@@ -20,9 +20,6 @@
    </a>
 </p>
 
-<p align="center">
-   <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
-</p>
 <h1 align="center">Apiato</h1>
 <h3 align="center">Build scalable APIs faster | Powered by PHP and Laravel</h3>
 
