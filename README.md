@@ -17,11 +17,21 @@
    </a>
 </p>
 
-<h1 align="center">Apiato</h1>
-<h3 align="center">Build scalable APIs faster | Powered by PHP and Laravel</h3>
 
 ---
 
 ## Apiato Rector
 
-This package is a set of [Rector](https://getrector.org/) rules to automatically upgrade your Apiato project to the latest version.
+A set of [Rector](https://getrector.org/) rules to automatically upgrade your Apiato project to the latest version.
+
+### Installation
+
+```bash
+composer require mohammad-alavi/apiato-rector:dev-latest
+```
+
+### Usage
+
+```bash
+# TODO
+```
