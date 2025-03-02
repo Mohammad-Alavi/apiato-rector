@@ -9,6 +9,9 @@ use Rector\Rector\AbstractRector;
 
 final class RemoveGroupAttributeRector extends AbstractRector
 {
+    /**
+     * @return array<class-string<Node>>
+     */
     public function getNodeTypes(): array
     {
         return [Class_::class];
@@ -17,7 +20,7 @@ final class RemoveGroupAttributeRector extends AbstractRector
     /**
      * @param Class_ $node
      */
-    public function refactor(Node $node): Class_|null
+    public function refactor(Node $node): Node|null
     {
         $hasChanged = false;
         foreach ($node->attrGroups as $groupKey => $attrGroup) {
