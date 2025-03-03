@@ -22,6 +22,6 @@ final class RemoveGroupAttributeRectorTest extends AbstractRectorTestCase
 
     public function provideConfigFilePath(): string
     {
-        return __DIR__ . '/Config/configured_rule.php';
+        return __DIR__ . '/config/configured_rule.php';
     }
 }
