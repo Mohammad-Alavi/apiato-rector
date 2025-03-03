@@ -57,8 +57,7 @@
         "github-protocols": [
             "https"
         ],
-        "allow-plugins": {
-        }
+        "allow-plugins": []
     },
     "minimum-stability": "stable",
     "prefer-stable": true
