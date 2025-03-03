@@ -47,8 +47,8 @@ class SomeClass
     }
 }
 CODE_AFTER
-                )
-            ]
+                ),
+            ],
         );
     }
 
@@ -103,13 +103,14 @@ CODE_AFTER
     }
 
     /**
-     * We only match $this->methodName() calls
+     * We only match $this->methodName() calls.
      */
     private function isCalledOnThis(MethodCall $methodCall, string $name): bool
     {
         if (!$this->isName($methodCall->name, $name)) {
             return false;
         }
+
         return $methodCall->var instanceof Node\Expr\Variable
             && 'this' === $methodCall->var->name;
     }
@@ -153,7 +154,7 @@ CODE_AFTER
             $chainedCall = $this->nodeFactory->createMethodCall(
                 $chainedCall,
                 'addMeta',
-                [$maybeMetaCall->args[0]]
+                [$maybeMetaCall->args[0]],
             );
         }
 
@@ -162,7 +163,7 @@ CODE_AFTER
             $chainedCall = $this->nodeFactory->createMethodCall(
                 $chainedCall,
                 'parseIncludes',
-                [$maybeThirdArg]
+                [$maybeThirdArg],
             );
         }
 
