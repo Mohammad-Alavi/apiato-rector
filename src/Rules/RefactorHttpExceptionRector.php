@@ -57,24 +57,24 @@ final class RefactorHttpExceptionRector extends AbstractRector implements Config
         foreach ($class->stmts as $key => $stmt) {
             if ($stmt instanceof Property) {
                 $propertyName = $this->getName($stmt->props[0]->name);
-                if ($stmt->props[0]->default === null) {
+                if (null === $stmt->props[0]->default) {
                     continue;
                 }
-                if ($propertyName === 'code') {
+                if ('code' === $propertyName) {
                     if ($stmt->props[0]->default instanceof Node\Scalar\LNumber) {
                         $code = $stmt->props[0]->default->value;
                     } else {
                         $code = $stmt->props[0]->default;
                     }
                     unset($class->stmts[$key]);
-                } elseif ($propertyName === 'message') {
+                } elseif ('message' === $propertyName) {
                     $message = $stmt->props[0]->default->value;
                     unset($class->stmts[$key]);
                 }
             }
         }
 
-        if ($code !== null && $message !== null) {
+        if (null !== $code && null !== $message) {
             $class->stmts[] = $this->createCreateMethod($code, $message);
         }
 
@@ -101,7 +101,7 @@ final class RefactorHttpExceptionRector extends AbstractRector implements Config
 
         $codeArg = new Node\Arg(new Node\Expr\BinaryOp\Coalesce(
             new Node\Expr\Variable('statusCode'),
-            $codeArgExpr
+            $codeArgExpr,
         ));
 
         $messageArg = new Node\Arg(new Node\Expr\BinaryOp\Coalesce(
@@ -109,15 +109,15 @@ final class RefactorHttpExceptionRector extends AbstractRector implements Config
             new Node\Scalar\String_($defaultMessage),
         ));
 
-        $staticFactory = new Node\Expr\New_(
+        $staticFactory = new New_(
             new Node\Name('static'),
-            [$codeArg, $messageArg]
+            [$codeArg, $messageArg],
         );
 
         $returnStmt = new Node\Stmt\Return_($staticFactory);
 
         return new ClassMethod('create', [
-            'flags' => Node\Stmt\Class_::MODIFIER_PUBLIC | Node\Stmt\Class_::MODIFIER_STATIC,
+            'flags' => Class_::MODIFIER_PUBLIC | Class_::MODIFIER_STATIC,
             'params' => [$statusCodeParam, $messageParam],
             'returnType' => new Node\Name('static'),
             'stmts' => [$returnStmt],
@@ -127,9 +127,9 @@ final class RefactorHttpExceptionRector extends AbstractRector implements Config
     private function refactorInstantiation(New_ $node): Node|null
     {
         if (
-            $this->isName($node->class, 'static') ||
-            $this->isName($node->class, 'self') ||
-            !$this->isObjectType($node->class, new ObjectType($this->parentClass))
+            $this->isName($node->class, 'static')
+            || $this->isName($node->class, 'self')
+            || !$this->isObjectType($node->class, new ObjectType($this->parentClass))
         ) {
             return null;
         }
@@ -144,6 +144,7 @@ final class RefactorHttpExceptionRector extends AbstractRector implements Config
         );
 
         $className = $this->getName($node->class);
+
         return $this->nodeFactory->createStaticCall($className, 'create', [$statusCodeArg, $messageArg]);
     }
 }
