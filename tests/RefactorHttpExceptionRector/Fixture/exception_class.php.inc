@@ -22,9 +22,9 @@ use Symfony\Component\HttpFoundation\Response;
 class ExtendFrom {}
 class AccessDeniedHttpException extends ExtendFrom
 {
-    public static function create(?int $statusCode = null, ?string $message = null): \Symfony\Component\HttpKernel\Exception\HttpException
+    public static function create(?int $statusCode = null, ?string $message = null): static
     {
-        return static::fromStatusCode($statusCode ?? Response::HTTP_FORBIDDEN, $message ?? 'This action is unauthorized.');
+        return new static($statusCode ?? Response::HTTP_FORBIDDEN, $message ?? 'This action is unauthorized.');
     }
 }
 
