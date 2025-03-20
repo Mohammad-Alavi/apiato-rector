@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MohammadAlavi\ApiatoRector\Rules;
 
+use PhpParser\Modifiers;
 use PhpParser\Node;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PhpParser\Node\Expr\New_;
@@ -117,7 +118,7 @@ final class RefactorHttpExceptionRector extends AbstractRector implements Config
         $returnStmt = new Node\Stmt\Return_($staticFactory);
 
         return new ClassMethod('create', [
-            'flags' => Class_::MODIFIER_PUBLIC | Class_::MODIFIER_STATIC,
+            'flags' => Modifiers::PUBLIC | Modifiers::STATIC,
             'params' => [$statusCodeParam, $messageParam],
             'returnType' => new Node\Name('static'),
             'stmts' => [$returnStmt],
