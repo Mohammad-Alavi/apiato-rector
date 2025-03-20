@@ -22,24 +22,24 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "webmozart/assert": "^1.11",
         "illuminate/routing": "^10.0 || ^11.0 || ^12.0"
     },
     "require-dev": {
-        "brianium/paratest": "7.3.*",
+        "brianium/paratest": "^7.3",
         "fakerphp/faker": "^1.19.1",
         "friendsofphp/php-cs-fixer": "^3.8.0",
         "mockery/mockery": "^1.4.4",
         "php-standard-library/psalm-plugin": "^2.3",
         "phpmd/phpmd": "@stable",
-        "phpunit/phpunit": "10.5.31",
-        "psalm/plugin-laravel": "^2.8",
-        "psalm/plugin-mockery": "^1.1",
-        "psalm/plugin-phpunit": "^0.18.4",
+        "phpunit/phpunit": "^11.0",
+        "psalm/plugin-laravel": "^3.0",
+        "psalm/plugin-mockery": "^1.2",
+        "psalm/plugin-phpunit": "^0.19.2",
         "rector/rector": "^2.0",
         "roave/security-advisories": "dev-latest",
-        "vimeo/psalm": "^5.8.0"
+        "vimeo/psalm": "^6.0.0"
     },
     "autoload": {
         "psr-4": {
