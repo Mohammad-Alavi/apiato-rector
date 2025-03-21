@@ -62,7 +62,7 @@ final class UseModelFactoryRector extends AbstractRector implements Configurable
         // Build base static call: User::factory()
         $factoryStaticCall = new StaticCall(
             new FullyQualified($this->userClass),
-            'factory'
+            'factory',
         );
 
         if (0 === $argCount) {
@@ -108,7 +108,7 @@ final class UseModelFactoryRector extends AbstractRector implements Configurable
                 new Arg($factoryCall),
                 // $arg2 is always the second arg
                 new Arg($node->args[1]->value),
-            ]
+            ],
         );
     }
 
@@ -121,7 +121,7 @@ final class UseModelFactoryRector extends AbstractRector implements Configurable
             return false;
         }
 
-        return $methodCall->var instanceof Node\Expr\Variable
+        return $methodCall->var instanceof Variable
             && 'this' === $methodCall->var->name;
     }
 
@@ -129,7 +129,7 @@ final class UseModelFactoryRector extends AbstractRector implements Configurable
     {
         return new RuleDefinition(
             'Refactor $this->getTestingUser(...) calls to Laravel factory style testing',
-            []
+            [],
         );
     }
 }
