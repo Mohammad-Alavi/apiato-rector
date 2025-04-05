@@ -1,6 +1,6 @@
 <?php
 
-namespace MohammadAlavi\ApiatoRector\Tests\TransformMethodToResponseCreateRector\Fixture;
+namespace MohammadAlavi\ApiatoRector\Tests\TransformMethodToResponseFacadeRector\Fixture;
 
 class SomeClass
 {
@@ -26,7 +26,7 @@ class SomeClass
 -----
 <?php
 
-namespace MohammadAlavi\ApiatoRector\Tests\TransformMethodToResponseCreateRector\Fixture;
+namespace MohammadAlavi\ApiatoRector\Tests\TransformMethodToResponseFacadeRector\Fixture;
 
 class SomeClass
 {

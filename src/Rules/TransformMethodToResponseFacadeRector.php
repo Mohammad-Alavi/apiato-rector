@@ -12,7 +12,7 @@ use Rector\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 
-final class TransformMethodToResponseCreateRector extends AbstractRector
+final class TransformMethodToResponseFacadeRector extends AbstractRector
 {
     public function getRuleDefinition(): RuleDefinition
     {
