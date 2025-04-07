@@ -5,6 +5,7 @@ _ide_helper*.php
 .phpunit.result.cache
 /.phpunit.cache
 /psalm_cache/
+/phpstan_cache
 .DS_Store
 auth.json
 npm-debug.log
