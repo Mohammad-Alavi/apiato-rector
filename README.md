@@ -29,7 +29,7 @@ composer require --dev rector/rector
 php vendor/bin/rector
 ```
 
-### Rules
+### v12 to v13 Rules
 
 #### `TransformMethodToResponseFacadeRector`
 Converts `$this->transform(...)` calls to `Response::create(...)`.
@@ -50,7 +50,7 @@ return RectorConfig::configure()
 ```
 
 #### `RefactorHttpExceptionRector`
-Helps refactor exception classes to the new HTTP exception signature.
+Refactor exception classes to the new HTTP exception signature.
 
 ```php
 use MohammadAlavi\ApiatoRector\Rules\RefactorHttpExceptionRector;
