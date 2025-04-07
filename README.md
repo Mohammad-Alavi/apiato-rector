@@ -5,33 +5,64 @@
    <a href="https://codecov.io/gh/Mohammad-Alavi/apiato-rector">
       <img src="https://img.shields.io/codecov/c/github/Mohammad-Alavi/apiato-rector?token=c6e0b5g9GH" alt="code coverage"/>
    </a>
-   <br>
-   <a href="https://packagist.org/packages/Mohammad-Alavi/apiato-rector">
-      <img src="https://img.shields.io/packagist/dt/Mohammad-Alavi/apiato-rector" alt="total downloads">
-   </a>
-   <a href="https://github.com/Mohammad-Alavi/apiato-rector">
-      <img src="https://img.shields.io/github/license/Mohammad-Alavi/apiato-rector" alt="license">
-   </a>
-   <a href="https://discord.gg/ryPcV4KM5k">
-      <img src="https://img.shields.io/discord/800815227839053834?logo=discord&label=chat" alt="chat">
-   </a>
 </p>
 
-
----
-
-## Apiato Rector
+# Apiato Rector
 
 A set of [Rector](https://getrector.org/) rules to automatically upgrade your Apiato project to the latest version.
 
-### Installation
+## Installation
 
 ```bash
-composer require mohammad-alavi/apiato-rector:dev-latest
+composer require --dev mohammad-alavi/apiato-rector dev-latest
 ```
 
-### Usage
+Also ensure you have Rector itself installed:
 
 ```bash
-# TODO
+composer require --dev rector/rector
+```
+
+## Usage
+
+```bash
+php vendor/bin/rector
+```
+
+### Rules
+
+#### `TransformMethodToResponseFacadeRector`
+Converts `$this->transform(...)` calls to `Response::create(...)`.
+
+```php
+use MohammadAlavi\ApiatoRector\Rules\TransformMethodToResponseFacadeRector;
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+    ->withPaths([
+        __DIR__ . '/app',
+        __DIR__ . '/config',
+    ])
+    ->withImportNames(true, false, false, true)
+    ->withRules([
+        TransformMethodToResponseFacadeRector::class,
+    ]);
+```
+
+#### `RefactorHttpExceptionRector`
+Helps refactor exception classes to the new HTTP exception signature.
+
+```php
+use MohammadAlavi\ApiatoRector\Rules\RefactorHttpExceptionRector;
+use Rector\Config\RectorConfig;
+
+return RectorConfig::configure()
+    ->withPaths([
+        __DIR__ . '/app',
+        __DIR__ . '/config',
+    ])
+    ->withImportNames(true, false, false, true)
+    ->withConfiguredRule(RefactorHttpExceptionRector::class, [
+        'parent_class' => \App\Ship\Parents\Exceptions\HttpException::class,
+    ]);
 ```
